@@ -47,6 +47,6 @@ JoystickMotor/
 
 
 ## 작품 사진
-(./wheelchair.jpg)
+![Wheelchair Image](./wheelchair.jpg)
 ---
 
