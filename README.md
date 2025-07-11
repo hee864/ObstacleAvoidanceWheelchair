@@ -95,13 +95,5 @@ JoystickMotor/
 
 ---
 
-## 📜 라이선스
 
-이 프로젝트는 STMicroelectronics의 STM32 HAL 라이브러리를 사용하며, **LICENSE 파일**을 확인하세요.
-
----
-
-## 💬 문의
-
-궁금한 사항이나 개선 제안이 있다면 이슈를 남겨주세요!
 
