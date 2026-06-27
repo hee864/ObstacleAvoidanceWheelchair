@@ -23,6 +23,7 @@
 /* USER CODE BEGIN Includes */
 #include "string.h"
 #include "stdio.h"
+#include "moving_average_filter.h"
 
 /* USER CODE END Includes */
 
@@ -65,6 +66,9 @@ uint32_t targetDutyCycleLeft=0;
 uint32_t targetDutyCycleRight=0;
 uint32_t targetRPMLeft=0;
 uint32_t targetRPMRight=0;
+
+static MovingAverageFilter_t joystickFilterX;
+static MovingAverageFilter_t joystickFilterY;
 
 /* USER CODE END PV */
 
@@ -183,11 +187,11 @@ int main(void)
 	  if(joystickEnabled){
 		  HAL_ADC_Start(&hadc1);//pc0-x value
 		  if(HAL_ADC_PollForConversion(&hadc1,1000)==HAL_OK){
-			  adcValue[0]=HAL_ADC_GetValue(&hadc1);
+			  adcValue[0]=MovingAverageFilter_Update(&joystickFilterX, HAL_ADC_GetValue(&hadc1));
 		  }
 		  HAL_ADC_Start(&hadc1);//pc1-yvalue
 		  if(HAL_ADC_PollForConversion(&hadc1,1000)==HAL_OK){
-			  adcValue[1]=HAL_ADC_GetValue(&hadc1);
+			  adcValue[1]=MovingAverageFilter_Update(&joystickFilterY, HAL_ADC_GetValue(&hadc1));
 		  }
 
 	  }
